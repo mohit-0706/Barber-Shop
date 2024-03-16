@@ -1,0 +1,63 @@
+function bookAppointment() {
+    var date = document.getElementById("date").value;
+    var time = document.getElementById("time").value;
+    var name = document.getElementById("name").value;
+
+    // Validate form fields
+    if (date === "" || time === "" || name === "") {
+        alert("Please fill in all fields");
+        return;
+    }
+
+    // Check if the selected time is during lunchtime (12:00 PM - 1:00 PM)
+    if (time === "12:00" || time === "13:00") {
+        alert("Sorry, we are closed for lunch during this time. Please select a different time.");
+        return;
+    }
+
+    // Generate seating number (assuming you have a limit of 5 customers per hour)
+    var seatingNumber = generateSeatingNumber(date, time);
+    if (seatingNumber === null) {
+        alert("Sorry, all slots for this hour are filled. Please choose another time.");
+        return;
+    }
+
+    // Proceed with booking (you can customize this part)
+    console.log("Booking details:", {
+        date: date,
+        time: time,
+        name: name,
+        seatingNumber: seatingNumber
+    });
+
+    // Display seating number to the user
+    document.getElementById("generatedSeating").innerText = seatingNumber;
+}
+
+function generateSeatingNumber(date, time) {
+    // Simulate generating a seating number dynamically
+    // Here, you would typically check your database or server for available slots
+    // For demonstration purposes, let's limit to 5 customers per hour
+    var maxCustomersPerHour = 5;
+
+    // Logic to check if the slot is available based on date and time
+    // You would replace this with your actual logic to check availability
+    var currentHour = new Date(date + "T" + time + ":00").getHours();
+    var currentMinute = new Date(date + "T" + time + ":00").getMinutes();
+    var currentTimeSlot = currentHour + ":" + (currentMinute < 10 ? "0" + currentMinute : currentMinute);
+
+    // Here you would check your database or server for the number of bookings for the current time slot
+    // For demonstration purposes, let's assume a random number of bookings
+    var bookings = Math.floor(Math.random() * (maxCustomersPerHour + 1));
+
+    if (bookings >= maxCustomersPerHour) {
+        // If all slots are filled, return null to indicate unavailability
+        return null;
+    } else {
+        // If there are available slots, generate a seating number (you can customize this logic)
+        // For demonstration purposes, let's use a simple incrementing number
+        var seatingNumber = bookings + 1;
+        return seatingNumber;
+    }
+}
+
