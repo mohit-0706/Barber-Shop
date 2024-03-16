@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barber Shop Booking</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Welcome to Barber Shop</h1>
+    <div id="bookingForm">
+        <h2>Book an Appointment</h2>
+        <label for="date">Date:</label>
+        <input type="date" id="date">
+        <label for="time">Time:</label>
+        <select id="time">
+            <option value="9:00">9:00 AM</option>
+            <option value="10:00">10:00 AM</option>
+            <option value="11:00">11:00 AM</option>
+            <option value="13:00">1:00 PM</option>
+            <option value="14:00">2:00 PM</option>
+            <option value="15:00">3:00 PM</option>
+            <option value="16:00">4:00 PM</option>
+            <option value="17:00">5:00 PM</option>
+            <!-- Add more time options as needed -->
+        </select>
+        <label for="name">Name:</label>
+        <input type="text" id="name">
+        <label for="seating">Seating Number:</label>
+        <span id="generatedSeating"></span>
+        <button onclick="bookAppointment()">Book Appointment</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
